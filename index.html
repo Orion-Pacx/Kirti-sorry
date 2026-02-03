@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>I'm Sorry 💛</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .card {
+        background: white;
+        width: 90%;
+        max-width: 500px;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        text-align: center;
+        position: relative;
+    }
+
+    h1 {
+        margin-bottom: 15px;
+        color: #e75480;
+    }
+
+    .message {
+        font-size: 18px;
+        min-height: 70px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.5s ease;
+    }
+
+    .show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px;
+        background: #e75480;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #d6336c;
+        transform: scale(1.05);
+    }
+
+    .heart {
+        position: absolute;
+        color: #ff4d6d;
+        animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>I'm Sorry 🥺</h1>
+    <div class="message" id="text"></div>
+    <button onclick="nextMessage()">Next</button>
+</div>
+
+<script>
+const messages = [
+"Hey, I’m really sorry. I didn’t mean to ignore you at all.",
+"My brain lagged, not my feelings. Sorry for going quiet on you.",
+"That wasn’t intentional, I promise. You matter to me.",
+"I messed up there. Should’ve responded sooner — my bad.",
+"Sorry if that felt like I brushed you off. Totally not what I meant.",
+"I got caught up, but I should’ve still replied. I’m sorry.",
+"Zero attitude, zero ignoring — just poor timing. Sorry.",
+"I’d never ignore you on purpose. That one’s on me.",
+"Communication fail from my side. Can I make it up to you?",
+"Hey… I value our friendship a lot. Sorry for the silence."
+];
+
+let index = 0;
+const textDiv = document.getElementById("text");
+
+function nextMessage() {
+    textDiv.classList.remove("show");
+    setTimeout(() => {
+        textDiv.textContent = messages[index];
+        textDiv.classList.add("show");
+        index = (index + 1) % messages.length;
+    }, 200);
+}
+
+// Auto floating hearts
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 500);
+
+nextMessage();
+</script>
+
+</body>
+</html>
