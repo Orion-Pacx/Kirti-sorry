@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For You 💛</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I'm Sorry</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="bg"></div>
-
-<div class="app">
-    <h1 class="title">I Owe You An Apology</h1>
-    <div class="text-box">
-        <p id="text"></p>
+  <div class="vignette"></div>
+  <div id="bokeh"></div>
+  
+  <!-- Floating Hearts Container -->
+  <div id="hearts"></div>
+  
+  <!-- Sorry Bubbles Container -->
+  <div id="bubbles"></div>
+  
+  <!-- Ghost Text Container -->
+  <div id="ghosts"></div>
+  
+  <!-- Glass Card -->
+  <div class="glass-card" id="glassCard">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
     </div>
-    <div class="progress"></div>
-</div>
+    <div class="typing-container">
+      <span id="typingText"></span>
+      <span class="cursor" id="cursor"></span>
+    </div>
+    <div id="finalText" class="final-text hidden">I love you ❤️</div>
+  </div>
 
-<audio autoplay loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
