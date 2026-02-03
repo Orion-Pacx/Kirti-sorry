@@ -3,88 +3,102 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>I'm Sorry 💛</title>
+<title>I Owe You An Apology</title>
 <style>
-    body {
-        margin: 0;
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
-    }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    .card {
-        background: white;
-        width: 90%;
-        max-width: 500px;
-        padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        text-align: center;
-        position: relative;
-    }
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #1a1a2e, #0f0f1b 70%);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    color: white;
+}
 
-    h1 {
-        margin-bottom: 15px;
-        color: #e75480;
-    }
+/* Floating light particles */
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    animation: float linear infinite;
+}
 
-    .message {
-        font-size: 18px;
-        min-height: 70px;
-        opacity: 0;
-        transform: translateY(10px);
-        transition: all 0.5s ease;
-    }
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 0; }
+    30% { opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
 
-    .show {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.card {
+    backdrop-filter: blur(18px);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 40px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255, 105, 180, 0.15);
+    animation: fadeIn 1.2s ease;
+}
 
-    button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 25px;
-        background: #e75480;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-    button:hover {
-        background: #d6336c;
-        transform: scale(1.05);
-    }
+h1 {
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+    -webkit-background-clip: text;
+    color: transparent;
+}
 
-    .heart {
-        position: absolute;
-        color: #ff4d6d;
-        animation: float 6s linear infinite;
-    }
+.text {
+    font-size: 20px;
+    line-height: 1.5;
+    min-height: 80px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
 
-    @keyframes float {
-        0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
-    }
+.fade-out { opacity: 0; transform: translateY(10px); }
+.fade-in { opacity: 1; transform: translateY(0); }
+
+button {
+    margin-top: 25px;
+    padding: 12px 28px;
+    border-radius: 30px;
+    border: none;
+    font-size: 15px;
+    background: linear-gradient(90deg, #ff758c, #ff7eb3);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(255, 118, 150, 0.6);
+}
 </style>
 </head>
 <body>
 
 <div class="card">
-    <h1>I'm Sorry 🥺</h1>
-    <div class="message" id="text"></div>
-    <button onclick="nextMessage()">Next</button>
+    <h1>I'm Really Sorry</h1>
+    <div class="text" id="message"></div>
+    <button onclick="next()">Next</button>
 </div>
 
 <script>
-const messages = [
+const lines = [
 "Hey, I’m really sorry. I didn’t mean to ignore you at all.",
 "My brain lagged, not my feelings. Sorry for going quiet on you.",
 "That wasn’t intentional, I promise. You matter to me.",
@@ -97,30 +111,32 @@ const messages = [
 "Hey… I value our friendship a lot. Sorry for the silence."
 ];
 
-let index = 0;
-const textDiv = document.getElementById("text");
+let i = 0;
+const msg = document.getElementById("message");
 
-function nextMessage() {
-    textDiv.classList.remove("show");
+function show() {
+    msg.classList.add("fade-out");
     setTimeout(() => {
-        textDiv.textContent = messages[index];
-        textDiv.classList.add("show");
-        index = (index + 1) % messages.length;
-    }, 200);
+        msg.textContent = lines[i];
+        msg.classList.remove("fade-out");
+        msg.classList.add("fade-in");
+        i = (i + 1) % lines.length;
+    }, 300);
 }
 
-// Auto floating hearts
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
-}, 500);
+function next() { show(); }
+setInterval(show, 4500);
+show();
 
-nextMessage();
+/* generate floating particles */
+for (let j = 0; j < 40; j++) {
+    const p = document.createElement("div");
+    p.className = "particle";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (Math.random() * 6 + 6) + "s";
+    p.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(p);
+}
 </script>
 
 </body>
