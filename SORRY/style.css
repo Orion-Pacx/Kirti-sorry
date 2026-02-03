@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: #0f1020;
+    color: white;
+}
+
+/* Animated gradient background */
+.bg {
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #1a1a2e);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+    z-index: -2;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    color: #ff4d88;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+
+/* Glass UI */
+.app {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.05);
+    padding: 50px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 0 80px rgba(255, 100, 150, 0.2);
+    width: 85%;
+    max-width: 650px;
+}
+
+.title {
+    font-size: 26px;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.text-box {
+    min-height: 90px;
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+/* Progress line */
+.progress {
+    height: 4px;
+    margin-top: 30px;
+    background: linear-gradient(90deg, #ff758c, #ff7eb3);
+    width: 0%;
+    transition: width 1s ease;
+}
