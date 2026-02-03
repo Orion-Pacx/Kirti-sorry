@@ -3,32 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>I'm Sorry</title>
+  <title>I'm Sorry ❤️</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="vignette"></div>
-  <div id="bokeh"></div>
+  <!-- Containers for dynamic elements -->
+  <div id="hearts-container"></div>
+  <div id="bubbles-container"></div>
+  <div id="ghosts-container"></div>
+  <div id="sparkles-container"></div>
   
-  <!-- Floating Hearts Container -->
-  <div id="hearts"></div>
-  
-  <!-- Sorry Bubbles Container -->
-  <div id="bubbles"></div>
-  
-  <!-- Ghost Text Container -->
-  <div id="ghosts"></div>
-  
-  <!-- Glass Card -->
-  <div class="glass-card" id="glassCard">
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
+  <!-- Main glass card -->
+  <div class="glass-card" id="glass-card">
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
     </div>
-    <div class="typing-container">
-      <span id="typingText"></span>
-      <span class="cursor" id="cursor"></span>
+    <div class="text-container">
+      <div id="typing-text"></div>
+      <span class="cursor" id="cursor">|</span>
     </div>
-    <div id="finalText" class="final-text hidden">I love you ❤️</div>
+    <div id="final-message" class="final-message hidden">
+      Please forgive me... ❤️
+    </div>
   </div>
 
   <script src="script.js"></script>
